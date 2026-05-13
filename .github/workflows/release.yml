@@ -77,6 +77,16 @@ jobs:
       - name: Install frontend dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Inject release version into Tauri config
+        shell: bash
+        run: |
+          TAG="${{ steps.tag.outputs.value }}"
+          VERSION="${TAG#v}"
+          CONF=apps/desktop/src-tauri/tauri.conf.json
+          jq --arg v "$VERSION" '. + {version: $v}' "$CONF" > "$CONF.tmp" && mv "$CONF.tmp" "$CONF"
+          echo "Injected version: $VERSION"
+          jq '.version' "$CONF"
+
       - name: Build and publish release
         uses: tauri-apps/tauri-action@v0
         env:
