@@ -127,8 +127,9 @@ jobs:
           CI: false
           POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
           VITE_POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
-          VITE_APP_URL: "https://limly.io"
-          VITE_API_URL: "https://api.limly.io"
+          VITE_APP_URL: "https://app.limly.io"
+          VITE_API_URL: "https://app.limly.io"
+          VITE_STT_URL: "https://stt.limly.io"
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
